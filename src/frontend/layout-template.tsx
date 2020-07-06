@@ -66,13 +66,14 @@ const html = (admin: AdminBro, currentAdmin?: CurrentAdmin, location = '/'): str
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>${admin.options.branding.companyName}</title>
       ${faviconTag}
+      ${styles.join('\n')}
+      ${scripts.join('\n')}
 
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" type="text/css">
 
       <script src="${h.assetPath('global.bundle.js')}"></script>
       <script src="${h.assetPath('app.bundle.js')}"></script>
-      <script src="${h.assetPath('components.bundle.js')}"></script>
-      ${styles.join('\n')}
+      <script src="${h.urlBuilder(['frontend', 'assets', 'components.bundle.js'])}"></script>
     </head>
     <body>
       <div id="app" />
@@ -80,7 +81,6 @@ const html = (admin: AdminBro, currentAdmin?: CurrentAdmin, location = '/'): str
         var app = document.getElementById( 'app' );
         ReactDOM.render( AdminBro.Application, app );
       </script>
-      ${scripts.join('\n')}
     </body>
     </html>
   `
